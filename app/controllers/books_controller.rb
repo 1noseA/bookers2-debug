@@ -2,7 +2,9 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
 
   def show
-  	@book = Book.find(params[:id])
+    @user = User.find(params[:id])
+  	@book = Book.find.(params[:id])
+    @books = Book.new
   end
 
   def index
@@ -16,7 +18,7 @@ class BooksController < ApplicationController
   		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
   	else
   		@books = Book.all
-  		render 'index'
+  		render "index"
   	end
   end
 
